@@ -16,5 +16,14 @@ public class GetValue {
     public GetValue() {
        
     }
-   
+    public String sumTablespaces()
+    {
+        da = new DataAccess("Select sum(bytes)/1024/1024 used_space_mb from dba_segments");
+        return da.returnValue().toString () + " MB";
+    }
+    public String sumDataFile()
+    {
+        da = new DataAccess("Select sum(bytes)/1024/1024 total_space_mb from dba_data_files");
+        return da.returnValue().toString () + " MB";
+    }
 }
