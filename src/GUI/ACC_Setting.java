@@ -6,7 +6,10 @@ package GUI;
 
 import BLL.GetData;
 import Ultilities.ConvertData.ConvertDataORCL;
-
+import javax.swing.border.*;
+import java.awt.*;
+import javax.swing.*;
+import java.net.URL;
 /**
  *
  * @author phatl
@@ -16,26 +19,49 @@ public class ACC_Setting extends javax.swing.JFrame {
     /**
      * Creates new form ACC_Setting
      */
-    public ACC_Setting() {
+     public ACC_Setting(String user)
+     {
         initComponents();
+        URL url = getClass().getResource("/Ultilities/icon/profile.png");
+        ImageIcon icon = new ImageIcon(url);
+        this.setIconImage ( icon.getImage ());
         txt_chucVu.setEditable(false);
         txt_username.setEditable(false);
         txt_SDT.setEditable(false);
         txt_GioiTinh.setEditable(false);
-        loadInfo();
-    }
+        txt_chucVu.setOpaque (false);
+        txt_username.setOpaque(false);
+        txt_SDT.setOpaque(false);
+        txt_GioiTinh.setOpaque(false);
+        loadInfo(user);
+     }
+   
     
     GetData getdata = new GetData();
-    private void loadInfo(){
-        Object[][] info = getdata.getInfoAccount();
-        if(info != null && info.length > 0){
-            txt_hoTen.setText(info[0][1].toString());
-            txt_maNV.setText(info[0][0].toString());
+    private void loadInfo(String user)
+    {
+        if(user.compareTo("SYS") == 0)
+        {
+            txt_hoTen.setText("ADMIN");
+            txt_maNV.setText("NV000");
 
-            txt_SDT.setText("SDT: "+info[0][2].toString());
-            txt_GioiTinh.setText("Giới tính: "+info[0][3].toString());
-            txt_username.setText("Username: "+info[0][4].toString().toUpperCase());
-            txt_chucVu.setText("Chức vụ: "+getQuyenHan(info[0][0].toString()));
+            txt_SDT.setText("  SDT: (089) 7642-3879-832");
+            txt_GioiTinh.setText("  Giới tính: Unknown");
+            txt_username.setText("  Username: SYS");
+            txt_chucVu.setText("  Chức vụ: Người quản trị hệ thống");
+        }
+        else
+        {
+            Object[][] info = getdata.getInfoAccount();
+            if(info != null && info.length > 0){
+                txt_hoTen.setText(info[0][1].toString());
+                txt_maNV.setText(info[0][0].toString());
+
+                txt_SDT.setText("  SDT: "+info[0][2].toString());
+                txt_GioiTinh.setText("  Giới tính: "+info[0][3].toString());
+                txt_username.setText("  Username: "+info[0][4].toString().toUpperCase());
+                txt_chucVu.setText("  Chức vụ: "+getQuyenHan(info[0][0].toString()));
+            }
         }
     }
 
@@ -66,88 +92,78 @@ public class ACC_Setting extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        bg_avatar = new Ultilities.login.Background();
+        bg_user = new javax.swing.JLabel();
         txt_hoTen = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
         txt_SDT = new javax.swing.JTextField();
         txt_GioiTinh = new javax.swing.JTextField();
         txt_username = new javax.swing.JTextField();
         txt_chucVu = new javax.swing.JTextField();
         txt_maNV = new javax.swing.JLabel();
         btn_ChangePassword = new Ultilities.swing.Controls.ButtonGradient();
+        jLabel1 = new javax.swing.JLabel();
+        Bg_3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setName("ThongTinTaiKhoan"); // NOI18N
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("THÔNG TIN TÀI KHOẢN");
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        bg_avatar.setImage("/Ultilities/icon/user.png");
+        bg_user.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        bg_user.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ultilities/icon/user.png"))); // NOI18N
+        bg_user.setToolTipText("");
+        jPanel2.add(bg_user, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 70, 120, 90));
 
-        txt_hoTen.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txt_hoTen.setFont(new java.awt.Font("Rockwell", 0, 36)); // NOI18N
         txt_hoTen.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txt_hoTen.setText("Họ Tên");
         txt_hoTen.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jPanel2.add(txt_hoTen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 560, -1));
 
-        jPanel3.setLayout(new java.awt.GridLayout(2, 2));
-
+        txt_SDT.setBackground(new java.awt.Color(255, 161, 108));
         txt_SDT.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        txt_SDT.setText("SDT");
-        txt_SDT.setBorder(null);
+        txt_SDT.setForeground(new java.awt.Color(255, 255, 255));
+        txt_SDT.setText("  SDT");
+        txt_SDT.setBorder(new RoundBorder(10));
+        txt_SDT.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txt_SDT.setFocusable(false);
-        jPanel3.add(txt_SDT);
+        jPanel2.add(txt_SDT, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 258, 54));
 
+        txt_GioiTinh.setBackground(new java.awt.Color(255, 161, 108));
         txt_GioiTinh.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        txt_GioiTinh.setText("Giới Tính");
-        txt_GioiTinh.setBorder(null);
+        txt_GioiTinh.setForeground(new java.awt.Color(255, 255, 255));
+        txt_GioiTinh.setText("  Giới Tính");
+        txt_GioiTinh.setBorder(new RoundBorder(10));
+        txt_GioiTinh.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txt_GioiTinh.setFocusable(false);
-        jPanel3.add(txt_GioiTinh);
+        txt_GioiTinh.setSelectionColor(new java.awt.Color(255, 161, 108));
+        jPanel2.add(txt_GioiTinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 260, 50));
 
+        txt_username.setBackground(new java.awt.Color(255, 161, 108));
         txt_username.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        txt_username.setText("Username");
-        txt_username.setBorder(null);
+        txt_username.setForeground(new java.awt.Color(255, 255, 255));
+        txt_username.setText("   Username");
+        txt_username.setBorder(new RoundBorder(10));
+        txt_username.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txt_username.setFocusable(false);
-        jPanel3.add(txt_username);
+        jPanel2.add(txt_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 260, 240, 50));
 
+        txt_chucVu.setBackground(new java.awt.Color(255, 161, 108));
         txt_chucVu.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        txt_chucVu.setText("Chức vụ");
-        txt_chucVu.setBorder(null);
+        txt_chucVu.setForeground(new java.awt.Color(255, 255, 255));
+        txt_chucVu.setText("   Chức vụ");
+        txt_chucVu.setBorder(new RoundBorder(10));
+        txt_chucVu.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txt_chucVu.setFocusable(false);
-        jPanel3.add(txt_chucVu);
+        jPanel2.add(txt_chucVu, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 320, 240, 54));
 
         txt_maNV.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt_maNV.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txt_maNV.setText("Mã Nhân Viên");
         txt_maNV.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(txt_hoTen, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(txt_maNV, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(148, 148, 148)
-                .addComponent(bg_avatar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(147, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(bg_avatar, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_hoTen)
-                .addGap(4, 4, 4)
-                .addComponent(txt_maNV)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        jPanel2.add(txt_maNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 560, 30));
 
         btn_ChangePassword.setForeground(new java.awt.Color(0, 0, 0));
         btn_ChangePassword.setText("Đổi Mật Khẩu");
@@ -162,29 +178,31 @@ public class ACC_Setting extends javax.swing.JFrame {
                 btn_ChangePasswordActionPerformed(evt);
             }
         });
+        jPanel2.add(btn_ChangePassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 400, -1, -1));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("THÔNG TIN TÀI KHOẢN");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 560, -1));
+
+        Bg_3.setBackground(new java.awt.Color(255, 161, 108));
+        Bg_3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Bg_3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ultilities/icon/bg3.jpg"))); // NOI18N
+        Bg_3.setLabelFor(Bg_3);
+        Bg_3.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jPanel2.add(Bg_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 560, 460));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btn_ChangePassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btn_ChangePassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -195,7 +213,7 @@ public class ACC_Setting extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -210,12 +228,12 @@ public class ACC_Setting extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_ChangePasswordActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private Ultilities.login.Background bg_avatar;
+    private javax.swing.JLabel Bg_3;
+    private javax.swing.JLabel bg_user;
     private Ultilities.swing.Controls.ButtonGradient btn_ChangePassword;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JTextField txt_GioiTinh;
     private javax.swing.JTextField txt_SDT;
     private javax.swing.JTextField txt_chucVu;
@@ -223,4 +241,34 @@ public class ACC_Setting extends javax.swing.JFrame {
     private javax.swing.JLabel txt_maNV;
     private javax.swing.JTextField txt_username;
     // End of variables declaration//GEN-END:variables
+}
+class RoundBorder extends AbstractBorder {
+    private int radius; // Bán kính của đường viền tròn
+
+    public RoundBorder(int radius) {
+        this.radius = radius;
+    }
+
+    @Override
+    public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
+        Graphics2D g2d = (Graphics2D) g.create();
+
+        // Đặt đường viền màu đen
+        g2d.setColor(Color.BLACK);
+
+        // Vẽ đường viền tròn
+        g2d.drawRoundRect(x, y, width - 1, height - 1, radius, radius);
+
+        g2d.dispose();
+    }
+
+    @Override
+    public Insets getBorderInsets(Component c) {
+        return new Insets(radius, radius, radius, radius);
+    }
+
+    @Override
+    public boolean isBorderOpaque() {
+        return true;
+    }
 }

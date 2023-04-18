@@ -32,22 +32,20 @@ public class Dashboard extends javax.swing.JFrame {
         header.setUsername(x.getCurrentUser());
         header.setLastLogin(x.getLastLogin());
         setBackground(new Color(0, 0, 0, 0));
-
         menu.initMoving(Dashboard.this);
         menu.addEventMenuSelected(new EventMenuSelected() {
             @Override
             public void selected(int index) {
-                System.out.print(index);
                 if (index == 0) {
                     setForm(new StartForm());
                 } 
                 else if (index == 5) {
                     //setForm(new SystemForm());
                 }
-                else if (index == 9) {
+                else if (index == 8) {
                     Logout();
                 }
-                else if(index == 10)
+                else if(index == 9)
                 {
                     if(JOptionPane.showConfirmDialog(Dashboard.this, "Bạn muốn thoát chương trình ?") == JOptionPane.YES_OPTION)
                         System.exit(0);
@@ -66,7 +64,7 @@ public class Dashboard extends javax.swing.JFrame {
         command.add(javaBin);
         command.add("-jar");
         //System.out.println("path:" +currentJar.getAbsolutePath());
-        command.add(new File("dist\\QuanLyCafe.jar").getAbsolutePath());
+        command.add(new File("dist\\QuanLy_CaPhe.jar").getAbsolutePath());
 
         final ProcessBuilder builder = new ProcessBuilder(command);
         try {

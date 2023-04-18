@@ -74,7 +74,6 @@ public class ChangePassword extends javax.swing.JFrame {
         });
 
         buttonCustom1.setBorder(null);
-        buttonCustom1.setForeground(new java.awt.Color(0, 0, 0));
         buttonCustom1.setText("Resend");
         buttonCustom1.setBorderColor(new java.awt.Color(102, 255, 255));
         buttonCustom1.setColor(new java.awt.Color(204, 255, 255));

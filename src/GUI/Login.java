@@ -235,8 +235,6 @@ public class Login extends javax.swing.JFrame {
             dash.setVisible(true);
             Dashboard.conn = conn;
             Dashboard.loginForm = this;
-            
-            JOptionPane.showMessageDialog(this, "Đăng nhập Thành Công !","Thông Báo",JOptionPane.INFORMATION_MESSAGE);
             return true;
         }
         catch(Exception err){

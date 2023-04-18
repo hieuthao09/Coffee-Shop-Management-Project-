@@ -69,7 +69,6 @@ public class ACC_ManageAccount extends javax.swing.JFrame {
 
         refresh.setBackground(new java.awt.Color(102, 204, 255));
         refresh.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        refresh.setForeground(new java.awt.Color(0, 0, 0));
         refresh.setText("Làm Mới");
         refresh.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

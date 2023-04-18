@@ -29,16 +29,16 @@ public class Menu extends javax.swing.JPanel {
     }
 
     private void init() {
-        listMenu1.addItem(new Model_Menu("0", "Đặt món", Model_Menu.MenuType.MENU));
-        listMenu1.addItem(new Model_Menu("1", "Sản phẩm", Model_Menu.MenuType.MENU));
-        listMenu1.addItem(new Model_Menu("2", "Khuyến Mãi", Model_Menu.MenuType.MENU));
-        listMenu1.addItem(new Model_Menu("3", "Quản Lý Kho", Model_Menu.MenuType.MENU));
-        listMenu1.addItem(new Model_Menu("4", "Khách Hàng", Model_Menu.MenuType.MENU));
-        listMenu1.addItem(new Model_Menu("5", "Thống Kê", Model_Menu.MenuType.MENU));
-        listMenu1.addItem(new Model_Menu("6", "Tìm Kiếm", Model_Menu.MenuType.MENU));
+        listMenu1.addItem(new Model_Menu("0", "  Đặt món", Model_Menu.MenuType.MENU));
+        listMenu1.addItem(new Model_Menu("1", "  Sản phẩm", Model_Menu.MenuType.MENU));
+        listMenu1.addItem(new Model_Menu("2", "  Khuyến Mãi", Model_Menu.MenuType.MENU));
+        listMenu1.addItem(new Model_Menu("3", "  Quản Lý Kho", Model_Menu.MenuType.MENU));
+        listMenu1.addItem(new Model_Menu("4", "  Khách Hàng", Model_Menu.MenuType.MENU));
+        listMenu1.addItem(new Model_Menu("5", "  Thống Kê", Model_Menu.MenuType.MENU));
+        listMenu1.addItem(new Model_Menu("6", "  Tìm Kiếm", Model_Menu.MenuType.MENU));
         listMenu1.addItem(new Model_Menu("", " ", Model_Menu.MenuType.EMPTY));
-        listMenu1.addItem(new Model_Menu("9", "Đăng Xuất", Model_Menu.MenuType.MENU));
-        listMenu1.addItem(new Model_Menu("10", "Thoát", Model_Menu.MenuType.MENU));
+        listMenu1.addItem(new Model_Menu("8", "  Đăng Xuất", Model_Menu.MenuType.MENU));
+        listMenu1.addItem(new Model_Menu("9", "  Thoát", Model_Menu.MenuType.MENU));
     }
 
     @SuppressWarnings("unchecked")
@@ -51,7 +51,7 @@ public class Menu extends javax.swing.JPanel {
 
         panelMoving.setOpaque(false);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Microsoft Uighur", 1, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Coffee Shop");
@@ -60,13 +60,13 @@ public class Menu extends javax.swing.JPanel {
         panelMoving.setLayout(panelMovingLayout);
         panelMovingLayout.setHorizontalGroup(
             panelMovingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
         );
         panelMovingLayout.setVerticalGroup(
             panelMovingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMovingLayout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
-                .addGap(0, 0, 0))
+            .addGroup(panelMovingLayout.createSequentialGroup()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         listMenu1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -83,7 +83,7 @@ public class Menu extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(panelMoving, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(listMenu1, javax.swing.GroupLayout.DEFAULT_SIZE, 511, Short.MAX_VALUE))
+                .addComponent(listMenu1, javax.swing.GroupLayout.DEFAULT_SIZE, 490, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
