@@ -22,9 +22,6 @@ public class ACC_Setting extends javax.swing.JFrame {
      public ACC_Setting(String user)
      {
         initComponents();
-        URL url = getClass().getResource("/Ultilities/icon/profile.png");
-        ImageIcon icon = new ImageIcon(url);
-        this.setIconImage ( icon.getImage ());
         txt_chucVu.setEditable(false);
         txt_username.setEditable(false);
         txt_SDT.setEditable(false);
@@ -93,15 +90,14 @@ public class ACC_Setting extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        bg_user = new javax.swing.JLabel();
         txt_hoTen = new javax.swing.JLabel();
         txt_SDT = new javax.swing.JTextField();
         txt_GioiTinh = new javax.swing.JTextField();
         txt_username = new javax.swing.JTextField();
         txt_chucVu = new javax.swing.JTextField();
         txt_maNV = new javax.swing.JLabel();
-        btn_ChangePassword = new Ultilities.swing.Controls.ButtonGradient();
         jLabel1 = new javax.swing.JLabel();
+        btn_ChangePassword = new Ultilities.swing.Controls.ButtonGradient();
         Bg_3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -110,11 +106,6 @@ public class ACC_Setting extends javax.swing.JFrame {
         setName("ThongTinTaiKhoan"); // NOI18N
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        bg_user.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        bg_user.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ultilities/icon/user.png"))); // NOI18N
-        bg_user.setToolTipText("");
-        jPanel2.add(bg_user, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 70, 120, 90));
 
         txt_hoTen.setFont(new java.awt.Font("Rockwell", 0, 36)); // NOI18N
         txt_hoTen.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -165,6 +156,11 @@ public class ACC_Setting extends javax.swing.JFrame {
         txt_maNV.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jPanel2.add(txt_maNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 560, 30));
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("THÔNG TIN TÀI KHOẢN");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 560, -1));
+
         btn_ChangePassword.setForeground(new java.awt.Color(0, 0, 0));
         btn_ChangePassword.setText("Đổi Mật Khẩu");
         btn_ChangePassword.setColor1(new java.awt.Color(0, 255, 153));
@@ -180,11 +176,6 @@ public class ACC_Setting extends javax.swing.JFrame {
         });
         jPanel2.add(btn_ChangePassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 400, -1, -1));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("THÔNG TIN TÀI KHOẢN");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 560, -1));
-
         Bg_3.setBackground(new java.awt.Color(255, 161, 108));
         Bg_3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Bg_3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ultilities/icon/bg3.jpg"))); // NOI18N
@@ -197,7 +188,7 @@ public class ACC_Setting extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -229,7 +220,6 @@ public class ACC_Setting extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Bg_3;
-    private javax.swing.JLabel bg_user;
     private Ultilities.swing.Controls.ButtonGradient btn_ChangePassword;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;

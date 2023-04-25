@@ -4,6 +4,7 @@ import event.EventMenuSelected;
 import java.awt.Color;
 import javax.swing.JComponent;
 import BLL.GetData;
+import GUI.Ban_ThanhToan.BanHang;
 import GUI.Dashboard;
 import java.io.File;
 import java.sql.*;
@@ -13,6 +14,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+
 
 /**
  *
@@ -26,21 +28,25 @@ public class Dashboard extends javax.swing.JFrame {
     public static Connection conn = null; 
     public static Login loginForm = null;
     GetData x = new GetData();
-    
+    boolean khoidong = false;
+   
     public Dashboard(String user) {
         initComponents();
         header.setUsername(x.getCurrentUser());
         header.setLastLogin(x.getLastLogin());
         setBackground(new Color(0, 0, 0, 0));
-        menu.initMoving(Dashboard.this);
-        menu.addEventMenuSelected(new EventMenuSelected() {
+
+        menu1.initMoving(Dashboard.this);
+        menu1.addEventMenuSelected(new EventMenuSelected() {
             @Override
             public void selected(int index) {
-                if (index == 0) {
-                    setForm(new StartForm());
+                System.out.print(index);
+                if (index == 0 && khoidong==false) {
+                    setForm(new BanHang());
+                    khoidong = true;
                 } 
-                else if (index == 5) {
-                    //setForm(new SystemForm());
+                else if (index == 0) {
+                     
                 }
                 else if (index == 8) {
                     Logout();
@@ -53,7 +59,8 @@ public class Dashboard extends javax.swing.JFrame {
             }
         });
         //  set when system open start with home form
-        setForm(new StartForm());
+       setForm(new BanHang());
+       khoidong = true;
     }
 
     private void Logout(){
@@ -64,7 +71,7 @@ public class Dashboard extends javax.swing.JFrame {
         command.add(javaBin);
         command.add("-jar");
         //System.out.println("path:" +currentJar.getAbsolutePath());
-        command.add(new File("dist\\QuanLy_CaPhe.jar").getAbsolutePath());
+        command.add(new File("dist\\Quanly_CaPhe.jar").getAbsolutePath());
 
         final ProcessBuilder builder = new ProcessBuilder(command);
         try {
@@ -76,10 +83,10 @@ public class Dashboard extends javax.swing.JFrame {
     }
     
     private void setForm(JComponent com) {
-        mainPanel.removeAll();
-        mainPanel.add(com);
-        mainPanel.repaint();
-        mainPanel.revalidate();
+        mainPanel1.removeAll();
+        mainPanel1.add(com);
+        mainPanel1.repaint();
+        mainPanel1.revalidate();
     }
     
     /**
@@ -91,57 +98,38 @@ public class Dashboard extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelBorder1 = new Ultilities.swing.PanelBorder();
-        menu = new Ultilities.component.Menu();
-        mainPanel = new javax.swing.JPanel();
+        menu1 = new Ultilities.component.Menu();
         header = new Ultilities.component.Header();
+        mainPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setUndecorated(true);
 
-        mainPanel.setOpaque(false);
-        mainPanel.setLayout(new java.awt.BorderLayout());
-
-        javax.swing.GroupLayout panelBorder1Layout = new javax.swing.GroupLayout(panelBorder1);
-        panelBorder1.setLayout(panelBorder1Layout);
-        panelBorder1Layout.setHorizontalGroup(
-            panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelBorder1Layout.createSequentialGroup()
-                .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addGroup(panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(header, javax.swing.GroupLayout.DEFAULT_SIZE, 790, Short.MAX_VALUE)))
-        );
-        panelBorder1Layout.setVerticalGroup(
-            panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(menu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(panelBorder1Layout.createSequentialGroup()
-                .addComponent(header, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(2, 2, 2)
-                .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 616, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        mainPanel1.setOpaque(false);
+        mainPanel1.setLayout(new java.awt.BorderLayout());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1019, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(panelBorder1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(menu1, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(272, 272, 272)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(mainPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(header, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1098, Short.MAX_VALUE))))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 686, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 4, Short.MAX_VALUE)
-                    .addComponent(panelBorder1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 4, Short.MAX_VALUE)))
+            .addComponent(mainPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 667, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(menu1, javax.swing.GroupLayout.PREFERRED_SIZE, 736, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -151,8 +139,7 @@ public class Dashboard extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private Ultilities.component.Header header;
-    private javax.swing.JPanel mainPanel;
-    private Ultilities.component.Menu menu;
-    private Ultilities.swing.PanelBorder panelBorder1;
+    private javax.swing.JPanel mainPanel1;
+    private Ultilities.component.Menu menu1;
     // End of variables declaration//GEN-END:variables
 }

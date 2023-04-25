@@ -60,7 +60,7 @@ public class Menu extends javax.swing.JPanel {
         panelMoving.setLayout(panelMovingLayout);
         panelMovingLayout.setHorizontalGroup(
             panelMovingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
         );
         panelMovingLayout.setVerticalGroup(
             panelMovingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

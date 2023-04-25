@@ -38,6 +38,10 @@ public class ConvertDataORCL {
             Date date=new Date(ts.getTime());  
             //System.out.print(date+", "); 
             res = date.toString();
+        }else if(obj instanceof byte[])
+        {
+            byte[] byteArr = (byte[]) obj;
+            res = Byte.toString(byteArr[0]);
         }
         else
             res = "null";
