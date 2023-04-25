@@ -1,6 +1,7 @@
 package BLL;
 
 import DAL.DataAccess;
+import DTO.SanPham;
 import java.util.ArrayList;
 
 public class GetData {
@@ -245,5 +246,21 @@ public class GetData {
     public Object[][] getAllDirectory(){
         DataAccess da = new DataAccess("select * from DBA_DIRECTORIES");
         return da.QueryContentTable();
+    }
+    public ArrayList getDataDSSP(){
+        DataAccess da = new DataAccess("SELECT MAMON,TENMON,GIA,KICHCO,TRANGTHAI,MOTA FROM DATACAPHE.THUCDON");
+        return da.QueryTable();
+    }
+    public ArrayList getDataPhanLoai(){
+        DataAccess da = new DataAccess("SELECT * FROM DATACAPHE.PHANLOAI");
+        return da.QueryTable();
+    }
+    public ArrayList getDataTD(String maLoai){
+        DataAccess da = new DataAccess(String.format("SELECT MAMON,TENMON,GIA,KICHCO,TRANGTHAI,MOTA FROM DATACAPHE.THUCDON WHERE PHANLOAIMALOAI = '%s'",maLoai));
+        return da.QueryTable();
+    }
+    public ArrayList getDataKM(){
+        DataAccess da = new DataAccess( "SELECT * FROM DATACAPHE.KHUYENMAI");
+        return da.QueryTable();
     }
 }

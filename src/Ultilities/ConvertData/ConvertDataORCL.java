@@ -1,7 +1,9 @@
 package Ultilities.ConvertData;
 import java.math.BigDecimal;
+import java.nio.ByteBuffer;
 import java.sql.Date;
 import java.sql.Timestamp;
+import oracle.sql.RAW;
 
 
 public class ConvertDataORCL {
@@ -30,6 +32,13 @@ public class ConvertDataORCL {
         {
             //System.out.print("null, ");
             res ="null";
+        }
+        else if(obj instanceof byte[])
+        {
+            byte[] byteArr = (byte[]) obj;
+            res = Byte.toString(byteArr[0]);
+
+            
         }
         else if(obj instanceof Timestamp)
         {

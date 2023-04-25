@@ -1,6 +1,8 @@
 package BLL;
 
 import DAL.DataAccess;
+import DTO.KhuyenMai;
+import DTO.SanPham;
 
 public class ExecuteData {
     public static boolean ExecuteSql(String SID, String SerialID)
@@ -54,5 +56,29 @@ public class ExecuteData {
     public static boolean createUser(String user, String pass){
         String temp = String.format("create user %s identified by %s",user,pass);
         return DataAccess.ResultOfExecuteSql(temp);
+    }
+    public  static boolean insertSP(SanPham sp){
+        String temp = String.format("INSERT INTO DATACAPHE.THUCDON(TENMON,GIA,KICHCO,TRANGTHAI,MOTA,PHANLOAIMALOAI) VALUES (N'%s','%s','%s','%s',N'%s','%s')", sp.getTenmon(),sp.getGia(),sp.getKichco(),sp.getTrangthai(),sp.getMota(),sp.getPhanloaimaloai());
+        return DataAccess.ResultOfExecuteSqlUpdate(temp);
+    }
+    public  static boolean deleteSP(SanPham sp){
+        String temp = String.format("DELETE FROM DATACAPHE.THUCDON WHERE MAMON = '%s' ", sp.getMamon());
+        return DataAccess.ResultOfExecuteSqlUpdate(temp);
+    }
+    public static boolean updateSP(SanPham sp){
+        String temp = String.format("UPDATE DATACAPHE.THUCDON SET TENMON = N'%s', GIA = '%s', KICHCO = '%s',TRANGTHAI = '%s',MOTA = N'%s',PHANLOAIMALOAI = '%s'  WHERE MAMON = '%s'", sp.getTenmon(),sp.getGia(),sp.getKichco(),sp.getTrangthai(),sp.getMota(),sp.getPhanloaimaloai(),sp.getMamon());
+        return DataAccess.ResultOfExecuteSqlUpdate(temp);
+    }
+    public  static boolean insertKM(KhuyenMai km){
+        String temp = String.format("INSERT INTO DATACAPHE.KHUYENMAI(TENKM,TILE) VALUES (N'%s','%f')", km.getTenkm(),km.getTile());
+        return DataAccess.ResultOfExecuteSqlUpdate(temp);
+    }
+    public static boolean deleteKM(KhuyenMai km){
+        String temp = String.format("DELETE FROM DATACAPHE.KHUYENMAI WHERE MAKM = '%s'", km.getMakm());
+        return DataAccess.ResultOfExecuteSqlUpdate(temp);
+    }
+    public static boolean updateKM(KhuyenMai km){
+        String temp = String.format("UPDATE DATACAPHE.KHUYENMAI SET TENKM = '%s', TILE = '%f'  WHERE MAKM = '%s'", km.getTenkm(),km.getTile(),km.getMakm());
+        return DataAccess.ResultOfExecuteSqlUpdate(temp);
     }
 }

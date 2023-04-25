@@ -82,6 +82,21 @@ public class DataAccess {
             return false;
         }
     }
+    public static boolean ResultOfExecuteSqlUpdate(String update) 
+    {
+        try{
+            st.executeUpdate(update);
+            return true;
+        }
+        catch(SQLException err)
+        {
+            JOptionPane.showMessageDialog(null, err.getMessage(),"Thông Báo",JOptionPane.ERROR_MESSAGE);
+            System.out.print(err.getMessage());
+            System.out.println("\n================\nerr in to DATACCESS - ResultExecute\n================");
+            return false;
+        }
+    }
+    
     
     //phương thức dùng để truy vấn tên cột
     public String[] QueryHeaderTable()

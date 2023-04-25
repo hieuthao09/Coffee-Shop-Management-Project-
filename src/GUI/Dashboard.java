@@ -38,9 +38,17 @@ public class Dashboard extends javax.swing.JFrame {
             @Override
             public void selected(int index) {
                 System.out.print(index);
-                if (index == 0) {
+                if (index == 0){
                     setForm(new StartForm());
-                } 
+                }
+                else if(index == 1)
+                {
+                    setForm(new QuanLySP());
+                }
+                else if(index == 2)
+                {
+                    setForm(new QuanLyKM());
+                }
                 else if (index == 5) {
                     //setForm(new SystemForm());
                 }
