@@ -59,7 +59,12 @@ public class GetData {
 
     // </editor-fold> 
     
-    // <editor-fold defaultstate="collapsed" desc="Lấy thông tin user">  
+    // <editor-fold defaultstate="collapsed" desc="Thao">  
+    public ArrayList getDataTimKiemThucDon(String tenmon) {
+        String temp = "select MAMON,TENMON,KICHCO, GIA,TRANGTHAI, HINHANH from datacaphe.THUCDON where tenmon like N'%"+ tenmon +"%'";
+        DataAccess da = new DataAccess(temp);
+        return da.QueryTable();
+    }
     public ArrayList getDataThucDon(String tenloai) {
         DataAccess da = new DataAccess(String.format("SELECT MAMON,TENMON,KICHCO, GIA,TRANGTHAI, HINHANH FROM datacaphe.THUCDON Where PHANLOAIMALOAI = '%s'",tenloai));
         return da.QueryTable();
@@ -81,8 +86,74 @@ public class GetData {
         return  da.QueryContentTable();
     }
     public Object[][] getdataTenKH(String sdt) {
-        DataAccess da = new DataAccess(String.format("select TENKH, DIEMTICHLUY from datacaphe.khachhang where SDT = '%s'",sdt));
+        DataAccess da = new DataAccess(String.format("select MAKH,TENKH, DIEMTICHLUY from datacaphe.khachhang where SDT = '%s'",sdt));
         return  da.QueryContentTable();
     }
+    public Object[][] getCurrentMANV()
+    {
+        DataAccess da = new DataAccess("select MANV from datacaphe.nhanvien where taikhoan = (SELECT lower(sys_context('USERENV', 'CURRENT_SCHEMA')) FROM dual)");
+        return  da.QueryContentTable();
+    }
+    public Object[][] getMAHD()
+    {
+        DataAccess da = new DataAccess("select MAHD from datacaphe.hoadon where nhanvienmanv = 'NV000' order by ngaylap desc");
+        return  da.QueryContentTable();
+    }
+   
     // </editor-fold> 
+    
+     public ArrayList getDataDSSP(){
+        DataAccess da = new DataAccess("SELECT MAMON,TENMON,GIA,KICHCO,TRANGTHAI,MOTA FROM DATACAPHE.THUCDON");
+        return da.QueryTable();
+    }
+     // <editor-fold defaultstate="collapsed" desc="Thi">  
+  
+    public ArrayList getDataTD(String maLoai){
+        DataAccess da = new DataAccess(String.format("SELECT MAMON,TENMON,GIA,KICHCO,TRANGTHAI,MOTA FROM DATACAPHE.THUCDON WHERE PHANLOAIMALOAI = '%s'",maLoai));
+        return da.QueryTable();
+    }
+    public ArrayList getDataKM(){
+        DataAccess da = new DataAccess( "SELECT * FROM DATACAPHE.KHUYENMAI");
+        return da.QueryTable();
+    }
+    
+        // </editor-fold> 
+    public Object[][] getDataKhoNguyenLieu(){
+        DataAccess da = new DataAccess( "SELECT MANL, TENNL,DONVI,SOLUONG FROM DATACAPHE.KHONGUYENLIEU");
+        return da.QueryContentTable();
+    }
+    // <editor-fold defaultstate="collapsed" desc="Lấy thông tin nhân viên"> 
+    public ArrayList getDataNhanVien() {
+        DataAccess da = new DataAccess("SELECT MANV, TENNV, SDT,GIOITINH, TAIKHOAN FROM datacaphe.NHANVIEN");
+        return da.QueryTable();
+    }
+    
+    public ArrayList getDataKhachHang() {
+        DataAccess da = new DataAccess("SELECT * FROM datacaphe.KHACHHANG");
+        return da.QueryTable();
+    }
+    public ArrayList getDataKH(){
+        DataAccess da = new DataAccess( "SELECT * FROM DATACAPHE.KHACHHANG");
+        return da.QueryTable();
+    }
+    // </editor-fold>
+    
+    public Object[][] getDataPhieuNhap(){
+        DataAccess da = new DataAccess( "select MAPN, TO_CHAR( NGAYNHAP,'yyyy-MM-dd HH:mm:ss'), TENNV from datacaphe.PHIEUNHAP , datacaphe.NHANVIEN nv where NHANVIENMANV  = nv.MANV");
+        return da.QueryContentTable();
+    }
+     public Object[][] getDataPhieuXuat(){
+        DataAccess da = new DataAccess( "SELECT MAXUAT, TO_CHAR( NGAYXUAT,'yyyy-MM-dd HH:mm:ss'), TENNV FROM DATACAPHE.XUATNGUYENLIEU , datacaphe.NHANVIEN nv where NHANVIENMANV  = nv.MANV");
+        return da.QueryContentTable();
+    }
+     public Object[][] getDataCTPhieuNhap(String ma){
+        DataAccess da = new DataAccess( String.format("select * from datacaphe.CHITIETPHIEUNHAP where PHIEUNHAPMAPN  = '%s'", ma));
+        return da.QueryContentTable();
+    }
+     public Object[][] getDataCTPhieuXuat(String ma){
+        DataAccess da = new DataAccess( String.format("select * from datacaphe.CHITIETXUAT where XUATNGUYENLIEUMAXUAT  = '%s'", ma));
+        return da.QueryContentTable();
+    }
+     
+     
 }

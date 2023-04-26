@@ -5,15 +5,20 @@ import java.awt.Color;
 import javax.swing.JComponent;
 import BLL.GetData;
 import GUI.Ban_ThanhToan.BanHang;
-import GUI.Dashboard;
+import GUI.Kho_PN_PX.Fr_phieuNhap1;
+import GUI.ThucDon_KhuyenMai.QuanLySP;
+import GUI.ThucDon_KhuyenMai.QuanLyKM;
+import GUI.Kho_PN_PX.QuanLyKho;
+import GUI.Nhanvien_khachhang.QLNhanVien_JPanel;
+import GUI.Nhanvien_khachhang.QuanLyKH;
 import java.io.File;
 import java.sql.*;
 import java.io.IOException;
-import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+
 
 
 /**
@@ -35,18 +40,27 @@ public class Dashboard extends javax.swing.JFrame {
         header.setUsername(x.getCurrentUser());
         header.setLastLogin(x.getLastLogin());
         setBackground(new Color(0, 0, 0, 0));
-
+        JComponent t = new BanHang();
         menu1.initMoving(Dashboard.this);
         menu1.addEventMenuSelected(new EventMenuSelected() {
             @Override
             public void selected(int index) {
                 System.out.print(index);
-                if (index == 0 && khoidong==false) {
-                    setForm(new BanHang());
-                    khoidong = true;
+                if (index == 0 && khoidong==true) {
+                    setForm(t);
                 } 
-                else if (index == 0) {
-                     
+                else if (index == 1) {
+                    setForm(new QuanLySP());
+                }else if (index == 2) {
+                    setForm(new QuanLyKM());
+                }else if (index == 3) {
+                   setForm(new QuanLyKho());
+                }else if (index == 4) {
+                   setForm(new Fr_phieuNhap1());
+                }else if (index == 5) {
+                   setForm(new QuanLyKH());
+                }else if (index == 6) {
+                   setForm(new QLNhanVien_JPanel());
                 }
                 else if (index == 8) {
                     Logout();
@@ -59,7 +73,7 @@ public class Dashboard extends javax.swing.JFrame {
             }
         });
         //  set when system open start with home form
-       setForm(new BanHang());
+       setForm(t);
        khoidong = true;
     }
 

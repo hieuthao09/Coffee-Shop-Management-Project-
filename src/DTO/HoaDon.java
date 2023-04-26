@@ -18,6 +18,15 @@ public class HoaDon {
     private String khuyenmaimakm;
     private String nhanvienmanv;
     private ArrayList<ChiTietHoaDon> dscthd;
+    private String hinhthuc;
+
+    public String getHinhthuc() {
+        return hinhthuc;
+    }
+
+    public void setHinhthuc(String hinhthuc) {
+        this.hinhthuc = hinhthuc;
+    }
 
     public HoaDon(String mahd, String tongtienvat, String ngalap, String khachhangmakh, String khuyenmaimakm, String nhanvienmanv) {
         this.mahd = mahd;
@@ -57,7 +66,7 @@ public class HoaDon {
         this.dscthd = dscthd;
     }
 
-    public void setDscthd(ChiTietHoaDon t) {
+    public void them(ChiTietHoaDon t) {
         this.dscthd.add(t);
     }
 
@@ -105,5 +114,22 @@ public class HoaDon {
         this.nhanvienmanv = nhanvienmanv;
     }
     
-    
+    public int tongsl()
+    {
+        int tong = 0;
+        for(ChiTietHoaDon t : dscthd)
+        {
+            tong = tong + Integer.parseInt(t.getSoLuong());
+        }
+        return tong;
+    }
+    public int tongthanhtoan()
+    {
+        int tong = 0;
+        for(ChiTietHoaDon t : dscthd)
+        {
+            tong = tong + Integer.parseInt(t.getGia());
+        }
+        return tong;
+    }
 }

@@ -181,7 +181,7 @@ public class ACC_Setting extends javax.swing.JFrame {
         Bg_3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ultilities/icon/bg3.jpg"))); // NOI18N
         Bg_3.setLabelFor(Bg_3);
         Bg_3.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jPanel2.add(Bg_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 560, 460));
+        jPanel2.add(Bg_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -60, 560, 460));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
