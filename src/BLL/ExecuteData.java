@@ -1,7 +1,9 @@
 package BLL;
 
 import DAL.DataAccess;
+import DTO.KhachHang;
 import DTO.KhuyenMai;
+import DTO.PhanLoai;
 import DTO.SanPham;
 
 public class ExecuteData {
@@ -79,6 +81,30 @@ public class ExecuteData {
     }
     public static boolean updateKM(KhuyenMai km){
         String temp = String.format("UPDATE DATACAPHE.KHUYENMAI SET TENKM = '%s', TILE = '%f'  WHERE MAKM = '%s'", km.getTenkm(),km.getTile(),km.getMakm());
+        return DataAccess.ResultOfExecuteSqlUpdate(temp);
+    }
+    public  static boolean insertPL(PhanLoai l){
+        String temp = String.format("INSERT INTO DATACAPHE.PHANLOAI(TENLOAI) VALUES (N'%s')", l.getTenloai());
+        return DataAccess.ResultOfExecuteSqlUpdate(temp);
+    }
+    public static boolean deletePL(PhanLoai l){
+        String temp = String.format("DELETE FROM DATACAPHE.PHANLOAI WHERE MALOAI = '%s'", l.getMaloai());
+        return DataAccess.ResultOfExecuteSqlUpdate(temp);
+    }
+    public static boolean updatePL(PhanLoai l){
+        String temp = String.format("UPDATE DATACAPHE.PHANLOAI SET TENLOAI = '%s' WHERE MALOAI = '%s'", l.getTenloai(),l.getMaloai());
+        return DataAccess.ResultOfExecuteSqlUpdate(temp);
+    }
+    public  static boolean insertKH(KhachHang kh){
+        String temp = String.format("INSERT INTO DATACAPHE.KHACHHANG(TENKH,GIOITINH,SDT,DIEMTICHLUY,HSD) VALUES (N'%s',N'%s','%s',%d,TO_DATE('%s', 'YYYY-MM-DD HH24:MI:SS'))", kh.getTenkh(),kh.getGioitinh(),kh.getSdt(),kh.getDiemtichluy(),kh.getHsd().toString());
+        return DataAccess.ResultOfExecuteSqlUpdate(temp);
+    }
+    public static boolean deleteKH(KhachHang kh){
+        String temp = String.format("DELETE FROM DATACAPHE.KHACHHANG WHERE MAKH = '%s'", kh.getMakh());
+        return DataAccess.ResultOfExecuteSqlUpdate(temp);
+    }
+    public static boolean updateKH(KhachHang kh){
+        String temp = String.format("UPDATE DATACAPHE.KHACHHANG SET TENKH = N'%s', GIOITINH = N'%s', SDT = '%s', DIEMTICHLUY = '%s', HSD = TO_DATE('%s', 'YYYY-MM-DD HH24:MI:SS') WHERE MAKH = '%s'", kh.getTenkh(),kh.getGioitinh(),kh.getSdt(),kh.getDiemtichluy(),kh.getHsd().toString(),kh.getMakh());
         return DataAccess.ResultOfExecuteSqlUpdate(temp);
     }
 }

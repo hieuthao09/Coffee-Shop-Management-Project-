@@ -10,6 +10,7 @@ import DTO.PhanLoai;
 import DTO.SanPham;
 import Ultilities.ConvertData.ConvertDataORCL;
 import java.io.File;
+import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
@@ -54,7 +55,7 @@ public class QuanLySP extends javax.swing.JPanel {
         tbl_sanpham = new javax.swing.JTable();
         btn_them = new Ultilities.swing.Controls.ButtonGradient();
         btn_xoa = new Ultilities.swing.Controls.ButtonGradient();
-        btn_sua = new Ultilities.swing.Controls.ButtonGradient();
+        btn_themloai = new Ultilities.swing.Controls.ButtonGradient();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -72,6 +73,7 @@ public class QuanLySP extends javax.swing.JPanel {
         cbo_trangthai = new Ultilities.swing.Controls.ComboBoxSuggestion();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        btn_sua1 = new Ultilities.swing.Controls.ButtonGradient();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -118,13 +120,13 @@ public class QuanLySP extends javax.swing.JPanel {
         });
         add(btn_xoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 600, -1, -1));
 
-        btn_sua.setText("Sửa");
-        btn_sua.addMouseListener(new java.awt.event.MouseAdapter() {
+        btn_themloai.setText("Thêm loại");
+        btn_themloai.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_suaMouseClicked(evt);
+                btn_themloaiMouseClicked(evt);
             }
         });
-        add(btn_sua, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 600, -1, -1));
+        add(btn_themloai, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 220, -1, -1));
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -207,6 +209,14 @@ public class QuanLySP extends javax.swing.JPanel {
         );
 
         add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, -1, -1));
+
+        btn_sua1.setText("Sửa");
+        btn_sua1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_sua1MouseClicked(evt);
+            }
+        });
+        add(btn_sua1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 600, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void cbo_loaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_loaiActionPerformed
@@ -291,36 +301,20 @@ public class QuanLySP extends javax.swing.JPanel {
         showDataOnTable(x.getDataTD(pl.getMaloai()));
     }//GEN-LAST:event_btn_xoaMouseClicked
 
-    private void btn_suaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_suaMouseClicked
+    private void btn_themloaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_themloaiMouseClicked
         // TODO add your handling code here:
-        String tenMon = txt_tenmon.getText();
-        String gia = txt_gia.getText();
-        String kichco = cbo_kichco.getSelectedItem().toString();
-        String trangthai = cbo_trangthai.getSelectedItem().toString();
-        if(trangthai.compareTo("Còn") == 0)
-            trangthai = "01";
-        else
-            trangthai = "00";
-        String mota = txt_mota.getText();
-        PhanLoai phanloaimaloai = (PhanLoai)cbo_loai.getSelectedItem();
-        sp.setTenmon(tenMon);
-        sp.setGia(gia);
-        sp.setKichco(kichco);
-        sp.setTrangthai(trangthai);
-        sp.setMota(mota);
-        sp.setPhanloaimaloai(phanloaimaloai.getMaloai());
-        int row = tbl_sanpham.getSelectedRow();
-        sp.setMamon(tbl_sanpham.getValueAt(row, 0).toString());
-        exdt.updateSP(sp);
-        JOptionPane.showMessageDialog(this, "Sửa Thành Công");
-        resetText();
-        showDataOnTable(x.getDataTD(pl.getMaloai()));
-    }//GEN-LAST:event_btn_suaMouseClicked
+        
+    }//GEN-LAST:event_btn_themloaiMouseClicked
+
+    private void btn_sua1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_sua1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_sua1MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private Ultilities.swing.Controls.ButtonGradient btn_sua;
+    private Ultilities.swing.Controls.ButtonGradient btn_sua1;
     private Ultilities.swing.Controls.ButtonGradient btn_them;
+    private Ultilities.swing.Controls.ButtonGradient btn_themloai;
     private Ultilities.swing.Controls.ButtonGradient btn_xoa;
     private Ultilities.swing.Controls.ComboBoxSuggestion cbo_kichco;
     private Ultilities.swing.Controls.ComboBoxSuggestion<PhanLoai> cbo_loai;

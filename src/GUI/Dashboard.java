@@ -49,6 +49,10 @@ public class Dashboard extends javax.swing.JFrame {
                 {
                     setForm(new QuanLyKM());
                 }
+                else if(index == 4)
+                {
+                    setForm(new QuanLyKH());
+                }
                 else if (index == 5) {
                     //setForm(new SystemForm());
                 }

@@ -263,4 +263,8 @@ public class GetData {
         DataAccess da = new DataAccess( "SELECT * FROM DATACAPHE.KHUYENMAI");
         return da.QueryTable();
     }
+    public ArrayList getDataKH(){
+        DataAccess da = new DataAccess( "SELECT * FROM DATACAPHE.KHACHHANG");
+        return da.QueryTable();
+    }
 }
