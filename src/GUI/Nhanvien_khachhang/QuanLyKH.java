@@ -291,7 +291,7 @@ public class QuanLyKH extends javax.swing.JPanel {
             txt_diemTL.setText(tbl_khachhang.getValueAt(row, 4).toString());
             Date date = new Date();
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            String dateStr = tbl_khachhang.getValueAt(row, 1).toString();
+            String dateStr = tbl_khachhang.getValueAt(row, 5).toString();
             try {
                 dcs_hsd.setDate(dateFormat.parse(dateStr));
             } catch (ParseException ex) {
@@ -332,6 +332,7 @@ public class QuanLyKH extends javax.swing.JPanel {
         String[] tenCot = {"Mã khách hàng", "Tên khách hàng", "Giới tính", "Số điện thoại", "Điểm tích lũy", "Hạn Sử Dụng"};
         model.setDataVector((Object[][]) arr.get(1), tenCot);
         tbl_khachhang.setRowHeight(50);
+        
     }
 
     private void resetText() {

@@ -300,6 +300,7 @@ public class BanHang
         ));
         jScrollPane2.setViewportView(table2);
 
+        txt_soluong.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         txt_soluong.setForeground(new java.awt.Color(0, 0, 0));
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
@@ -327,10 +328,10 @@ public class BanHang
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(txt_soluong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txt_soluong, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btn_tang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(12, 12, 12)
                         .addComponent(btn_giam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btn_xoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -428,13 +429,14 @@ public class BanHang
         add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 0, 580, 660));
 
         txt_timkiem.setBackground(new java.awt.Color(204, 204, 204));
+        txt_timkiem.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         txt_timkiem.setForeground(new java.awt.Color(0, 0, 0));
         txt_timkiem.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txt_timkiemKeyPressed(evt);
             }
         });
-        add(txt_timkiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 200, -1));
+        add(txt_timkiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 200, 40));
 
         cbo_phanloai.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cbo_phanloai.addActionListener(new java.awt.event.ActionListener() {

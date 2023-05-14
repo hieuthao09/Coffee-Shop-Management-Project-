@@ -145,7 +145,7 @@ public class ExecuteData {
     // </editor-fold>
     
     public  static boolean insertKH(KhachHang kh){
-        String temp = String.format("INSERT INTO DATACAPHE.KHACHHANG(TENKH,GIOITINH,SDT,DIEMTICHLUY,HSD) VALUES (N'%s',N'%s','%s',%d,TO_DATE('%s', 'YYYY-MM-DD HH24:MI:SS'))", kh.getTenkh(),kh.getGioitinh(),kh.getSdt(),kh.getDiemtichluy(),kh.getHsd().toString());
+        String temp = String.format("INSERT INTO DATACAPHE.KHACHHANG(TENKH,GIOITINH,SDT,DIEMTICHLUY,HSD) VALUES (N'%s',N'%s','%s','%s',TO_DATE('%s', 'YYYY-MM-DD HH24:MI:SS'))", kh.getTenkh(),kh.getGioitinh(),kh.getSdt(),kh.getDiemtichluy(),kh.getHsd());
         return DataAccess.ResultOfExecuteSqlUpdate(temp);
     }
     public static boolean deleteKH(KhachHang kh){
@@ -194,12 +194,12 @@ public class ExecuteData {
 
 
     public static boolean insertCTPN(ChiTietPhieuNhap pn){
-        String temp = String.format("INSERT INTO DATACAPHE.CHITIETPHIEUNHAP (SOLUONG, GIANHAP, TENNCC, NGUYENLIEUMANL, PHIEUNHAPMAPN) VALUES (%s, %f, N'%s', '%s', '%s')",pn.getSoluong(),pn.getGianhap(),pn.getTenncc(),pn.getNguyenlieumanl(),pn.getPhieunhapmapn());
+        String temp = String.format("INSERT INTO DATACAPHE.CHITIETPHIEUNHAP (SOLUONG, GIANHAP, TENNCC, NGUYENLIEUMANL, PHIEUNHAPMAPN) VALUES (%s, '%f', N'%s', '%s', '%s')",pn.getSoluong(),pn.getGianhap(),pn.getTenncc(),pn.getNguyenlieumanl(),pn.getPhieunhapmapn());
         return DataAccess.ResultOfExecuteSqlUpdate(temp);
     }
     
     public static boolean updateCTPN(ChiTietPhieuNhap pn){
-        String temp = String.format("    UPDATE \"DATACAPHE\".\"CHITIETPHIEUNHAP\" SET SOLUONG = %s, GIANHAP = %f, TENNCC = N'%s', NGUYENLIEUMANL = '%s' WHERE PHIEUNHAPMAPN = '%s'",pn.getSoluong(),pn.getGianhap(),pn.getTenncc(),pn.getNguyenlieumanl(),pn.getPhieunhapmapn());
+        String temp = String.format("    UPDATE \"DATACAPHE\".\"CHITIETPHIEUNHAP\" SET SOLUONG = %s, GIANHAP = '%f', TENNCC = N'%s' WHERE PHIEUNHAPMAPN = '%s'",pn.getSoluong(),pn.getGianhap(),pn.getTenncc(),pn.getPhieunhapmapn());
         return DataAccess.ResultOfExecuteSqlUpdate(temp);
     }
     public static boolean deleteCTPN(ChiTietPhieuNhap pn){
